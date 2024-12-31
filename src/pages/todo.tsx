@@ -23,14 +23,14 @@ function Todo(props: TodosProps) {
                   <Grid item xs={12} key={index} style={{paddingBottom: "16px"}}>
                     <Card variant="outlined" style={{display: "flex", justifyContent: "space-between"}}>
                       <CardContent>
-                        <Typography variant="body1">{todo.name} - {todo.status}</Typography> 
+                        <Typography variant="body1">{todo.name} - <span className={`${todo.status === "completed" ? "completed completed-lable" : ""}`}>{todo.status}</span></Typography> 
                       </CardContent>
                       <CardActions>
                         {
                          todo.status === "pending" &&
                             <Button
                             variant="contained"
-                            style={{backgroundColor: "#198754", color: "#fff"}}
+                            className="completed"
                             size="small"
                             onClick={() => props.handleCompleteToDo(index)}
                             >

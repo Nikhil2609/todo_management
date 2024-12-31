@@ -18,7 +18,8 @@ const App = () => {
     setTodo(todo)
   }
 
-  const handleAddToDo = () => {
+  const handleAddToDo = (e: any) => {
+    e.preventDefault();
     if(!todo) return;
     const todoList = [...todos, {name: todo, status: "pending"}];
     setTodos(todoList);
@@ -46,6 +47,7 @@ const App = () => {
         To-Do List
       </Typography>
 
+      <form onSubmit={handleAddToDo} >
       <Grid container spacing={2} alignItems="center">
         <Grid item xs={8}>
           <TextField
@@ -60,6 +62,7 @@ const App = () => {
           <Button
             variant="contained"
             color="primary"
+            type='submit'
             fullWidth
             onClick={handleAddToDo}
           > 
@@ -67,6 +70,7 @@ const App = () => {
           </Button>
         </Grid>
       </Grid>
+      </form>
 
       {/* to-do listing */}
       <TodoList todos={todos} handleDeleteToDo={handleDeleteToDo} handleCompleteToDo={handleCompleteToDo}/>
